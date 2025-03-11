@@ -36,11 +36,4 @@
   --text-color: #353430;
   --title-color: #FFC2E6;
   }
-  .header__dark-deco {
-    display: none;
-  }
-}
-
-.theme-light .page {
-  /* Вам также нужно будет написать ряд подобных селекторов */
 }
