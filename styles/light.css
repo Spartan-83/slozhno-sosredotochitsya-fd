@@ -24,7 +24,7 @@
   }
 }
 
-@media (prefers-color-scheme: light) {
+@media (prefers-color-scheme: light){
   :root {
   --bg-color: #FFF1F7;
   --bg-image: url(../images/cover-image-light.png);
@@ -35,5 +35,11 @@
   --outline-color: #32312D66;
   --text-color: #353430;
   --title-color: #FFC2E6;
+  }
+
+  :root.theme-auto {
+    .header__dark-deco {
+      display: none;
+    }
   }
 }

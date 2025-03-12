@@ -30,11 +30,12 @@
   grid-template-rows: 1fr min-content 1fr;
   padding: var(--main-inline-padding);
   height: 100vh;
-  min-height: 375px;
+  min-height: 668px;
 }
 
 .header__dark-deco {
   position: absolute;
+  inset: initial;
   display: inline-block;
   justify-self: flex-end;
   color: var(--accent-color);
@@ -146,13 +147,13 @@
 
 .main__article {
   display: grid;
-  gap: 20px;
+  gap: 10px;
 }
 
 .main__article-section {
   display: grid;
   gap: 10px;
-  grid-template-rows: min-content;
+  grid-template-rows: min-content
 }
 
 .main__article-title {
@@ -163,8 +164,11 @@
   font-weight: normal;
 }
 
+.article-medium, .article-large{
+  gap: 20px;
+} 
+
 .main__article-pictures {
-  margin-block-start: -10px;
   display: grid;
   grid-template-columns: 1fr;
   gap: 10px
@@ -174,7 +178,19 @@
   max-width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 0;
+  object-position: center;
+}
+
+
+.empty-tile {  /* Самое оптимальное решение, которое я нашел, для того чтобы новые карточки отображались корректно и не ломалось ничего остального (костыльно, но работает без ошибок) */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  clip: rect(0 0 0 0);
 }
 
 .article-extra-title {
@@ -184,9 +200,9 @@
 /*          FOOTER            */
 
 .footer {
-  padding: 10px; 
+  padding: var(--main-inline-padding); 
   height: 100vh;
-  min-height: 375px;
+  min-height: 668px;
   display: grid;
 }
 
@@ -230,23 +246,19 @@
   }
 
   .article-large {
-    grid-template-columns: 1fr 2fr;
-    grid-template-rows: min-content 1fr;
+    grid-template-columns: 1fr;
   }
 
-  .section-large {
-    grid-column: 1/3;
+  .article-large article:nth-child(n) {
+    grid-column: initial;
   }
+
   .main__article-pictures {
     margin-block-start: initial;
     gap: 20px;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
     max-height: 100vw;
-  }
-
-  .main__image {
-    max-height: 100%;
   }
 
   .main__image.sunset {
@@ -274,6 +286,10 @@
     grid-column: 2/4;
   }
 
+  .footer {
+    padding: 20px; 
+  }  
+
   .footer-title {
     font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
   }
@@ -289,13 +305,11 @@
     grid-auto-flow: column;
   }
 
-  .article-large {
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: min-content 1fr;
+  .empty-tile {
+    position: relative;;
   }
 
-  .section-large {
-    grid-row: 2;
-    grid-column: initial;
+  .article-large {
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }
