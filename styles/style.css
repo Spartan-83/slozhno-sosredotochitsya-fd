@@ -147,7 +147,7 @@
 
 .main__article {
   display: grid;
-  gap: 10px;
+  gap: 20px;
 }
 
 .main__article-section {
@@ -160,11 +160,20 @@
   color: var(--article-title-color);
 }
 
+.title-large {
+  max-width: 100%;
+}
+
 .main__article-sub-title {
   font-weight: normal;
 }
 
-.article-medium, .article-large{
+.main__article:has(.main__article-pictures) {
+  gap: 10px;
+}
+
+.article-large{
+  display: grid;
   gap: 20px;
 } 
 
@@ -179,18 +188,6 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
-}
-
-
-.empty-tile {  /* Самое оптимальное решение, которое я нашел, для того чтобы новые карточки отображались корректно и не ломалось ничего остального (костыльно, но работает без ошибок) */
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  overflow: hidden;
-  border: 0;
-  clip: rect(0 0 0 0);
 }
 
 .article-extra-title {
@@ -245,6 +242,10 @@
     grid-column: 2;
   }
 
+  .title-large {
+    max-width: 30%;
+  }
+  
   .article-large {
     grid-template-columns: 1fr;
   }
@@ -253,12 +254,15 @@
     grid-column: initial;
   }
 
+  .main__article:has(.main__article-pictures) {
+    gap: 20px;
+  }
+  
+
   .main__article-pictures {
     margin-block-start: initial;
     gap: 20px;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    max-height: 100vw;
   }
 
   .main__image.sunset {
@@ -303,10 +307,6 @@
 
   .header__theme-menu-list {
     grid-auto-flow: column;
-  }
-
-  .empty-tile {
-    position: relative;;
   }
 
   .article-large {
